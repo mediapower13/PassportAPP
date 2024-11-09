@@ -1,0 +1,108 @@
+html,
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee !important;
+  height: 100%;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.h3 {
+  text-align: center;
+}
+
+
+/* styles.css */
+
+/* Adjust the spacing for the navigation items */
+.navbar-nav .nav-item {
+  margin-left: 20px;
+}
+
+/* Custom styles for the jumbotron */
+.jumbotron {
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+/* Custom styles for the footer */
+footer {
+  border-top: 1px solid #e9ecef;
+}
+
+footer .text-muted {
+  font-size: 14px;
+}
+
+.container {
+  background-color: rgb(236, 224, 224);
+}
+
+.error-container {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.alert {
+  padding: 12px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #dc3545;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.error-icon {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.alert-danger {
+  background-color: #ff4d4f;
+  border: 1px solid #f5c6cb;
+}
+
+#messages ul.error{
+  list-style: none;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+#messages ul.success {
+  list-style: none;
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
