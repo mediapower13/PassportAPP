@@ -1,16 +1,24 @@
 // Password Toggle Functionality
 function togglePassword(fieldId) {
     const field = document.getElementById(fieldId);
-    const icon = event.currentTarget.querySelector('i');
+    const toggleBtn = event ? event.currentTarget : null;
     
-    if (field.type === 'password') {
+    if (!toggleBtn) return;
+    
+    const icon = toggleBtn.querySelector('i');
+    
+    if (field && field.type === 'password') {
         field.type = 'text';
-        icon.classList.remove('fa-eye');
-        icon.classList.add('fa-eye-slash');
-    } else {
+        if (icon) {
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        }
+    } else if (field) {
         field.type = 'password';
-        icon.classList.remove('fa-eye-slash');
-        icon.classList.add('fa-eye');
+        if (icon) {
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
     }
 }
 

@@ -9,7 +9,7 @@
         <a class="navbar-brand" href="{{ url_for('main.index') }}">
             <i class="fas fa-passport"></i> PassportApp
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -49,7 +49,7 @@
                 <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
                     <i class="fas fa-{{ 'check-circle' if category == 'success' else 'info-circle' }}"></i>
                     {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% endfor %}
             </div>
