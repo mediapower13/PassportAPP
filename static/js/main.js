@@ -62,17 +62,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Add loading animation to buttons
-document.querySelectorAll('button[type="submit"]').forEach(button => {
-    button.addEventListener('click', function() {
-        const originalText = this.innerHTML;
-        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
-        this.disabled = true;
-        
-        // Re-enable after form submission
-        setTimeout(() => {
-            this.innerHTML = originalText;
-            this.disabled = false;
-        }, 3000);
-    });
-});
+// Add loading animation to buttons on form submit (removed - was blocking form submission)
+// Forms will submit normally without animation interference
