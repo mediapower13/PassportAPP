@@ -47,9 +47,12 @@ instance/
 .DS_Store
 Thumbs.db
 
-# Node (for old files)
+# Old Node.js files (deprecated)
+passport/
 node_modules/
 npm-debug.log*
+config.js
+package.json
 
 # Logs
 *.log
