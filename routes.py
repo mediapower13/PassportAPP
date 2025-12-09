@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from models import User, db
+from models import User, Passport, db
+from datetime import datetime, timedelta
 import re
 
 # Create blueprints
@@ -12,7 +13,21 @@ main_bp = Blueprint('main', __name__)
 @main_bp.route('/')
 @login_required
 def index():
-    return render_template('dashboard.html', user=current_user)
+    # Get passport statistics
+    passport_count = Passport.query.filter_by(user_id=current_user.id).count()
+    
+    # Get expiring soon (within 90 days)
+    ninety_days_later = datetime.utcnow().date() + timedelta(days=90)
+    expiring_count = Passport.query.filter(
+        Passport.user_id == current_user.id,
+        Passport.expiry_date <= ninety_days_later,
+        Passport.expiry_date >= datetime.utcnow().date()
+    ).count()
+    
+    return render_template('dashboard.html', 
+                         user=current_user, 
+                         passport_count=passport_count,
+                         expiring_count=expiring_count)
 
 @main_bp.route('/profile')
 @login_required
