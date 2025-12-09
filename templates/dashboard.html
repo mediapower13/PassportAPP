@@ -20,6 +20,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('passport.index') }}">
+                        <i class="fas fa-passport"></i> My Passports
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('main.profile') }}">
                         <i class="fas fa-user"></i> Profile
                     </a>
@@ -81,12 +86,12 @@
             <div class="col-md-3">
                 <div class="stat-card">
                     <div class="stat-icon bg-primary">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-passport"></i>
                     </div>
                     <div class="stat-details">
-                        <h3>Welcome</h3>
-                        <p>Member Since</p>
-                        <span class="stat-value">{{ user.created_at.strftime('%b %Y') }}</span>
+                        <h3>Passports</h3>
+                        <p>Stored Documents</p>
+                        <span class="stat-value">{{ passport_count }}</span>
                     </div>
                 </div>
             </div>
@@ -111,7 +116,7 @@
                     </div>
                     <div class="stat-details">
                         <h3>Security</h3>
-                        <p>Protection Level</p>
+                        <p>AES-256 Encrypted</p>
                         <span class="stat-value">High</span>
                     </div>
                 </div>
@@ -123,9 +128,9 @@
                         <i class="fas fa-clock"></i>
                     </div>
                     <div class="stat-details">
-                        <h3>Last Login</h3>
-                        <p>Recent Activity</p>
-                        <span class="stat-value">Just Now</span>
+                        <h3>Expiring</h3>
+                        <p>Next 90 Days</p>
+                        <span class="stat-value">{{ expiring_count }}</span>
                     </div>
                 </div>
             </div>
@@ -140,14 +145,27 @@
                     </h3>
                     <div class="row g-3 mt-3">
                         <div class="col-md-4">
+                            <a href="{{ url_for('passport.add') }}" class="action-btn">
+                                <i class="fas fa-plus-circle"></i>
+                                <span>Add Passport</span>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{{ url_for('passport.index') }}" class="action-btn">
+                                <i class="fas fa-passport"></i>
+                                <span>View Passports</span>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
                             <a href="{{ url_for('main.profile') }}" class="action-btn">
                                 <i class="fas fa-user-edit"></i>
                                 <span>Edit Profile</span>
                             </a>
                         </div>
-                        <div class="col-md-4">
-                            <a href="{{ url_for('main.settings') }}" class="action-btn">
-                                <i class="fas fa-cog"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
                                 <span>Settings</span>
                             </a>
                         </div>
