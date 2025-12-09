@@ -5,7 +5,7 @@ Uses AES-256 encryption with Fernet (symmetric encryption)
 
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.hazmat.backends import default_backend
 import base64
 import os
@@ -28,7 +28,7 @@ class EncryptionService:
             raise ValueError("Encryption key must be provided or set in ENCRYPTION_KEY environment variable")
         
         # Derive a key from the secret
-        kdf = PBKDF2(
+        kdf = PBKDF2HMAC(
             algorithm=hashes.SHA256(),
             length=32,
             salt=b'passport_app_salt_2025',  # In production, use a random salt per user

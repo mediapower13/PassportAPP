@@ -5,9 +5,9 @@ python-dotenv==1.0.0
 email-validator==2.1.0
 Werkzeug==3.0.1
 cryptography==41.0.7
-Pillow==10.1.0
+Pillow>=10.2.0
 pytesseract==0.3.10
 passporteye==2.2.0
-opencv-python==4.8.1.78
+opencv-python>=4.8.1.78
 pyotp==2.9.0
 qrcode==7.4.2
