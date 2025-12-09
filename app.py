@@ -12,6 +12,10 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret-key-change-in-pro
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///passportapp.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# File upload configuration
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
+app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.jpeg', '.png', '.gif', '.pdf']
+
 # Import db from models
 from models import db, User
 
@@ -25,10 +29,12 @@ login_manager.login_message_category = 'info'
 
 # Import routes (after db is initialized)
 from routes import auth_bp, main_bp
+from passport_routes import passport_bp
 
 # Register blueprints
 app.register_blueprint(auth_bp)
 app.register_blueprint(main_bp)
+app.register_blueprint(passport_bp)
 
 @login_manager.user_loader
 def load_user(user_id):
