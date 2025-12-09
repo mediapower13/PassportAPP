@@ -753,3 +753,19 @@ body {
         text-align: center;
     }
 }
+
+/* Passport Image Preview Styles */
+.passport-photo-preview {
+    max-height: 200px;
+}
+
+.passport-document-preview {
+    max-width: 100%;
+    cursor: pointer;
+}
+
+/* Inline Form Style */
+.inline-delete-form {
+    display: inline;
+}
+

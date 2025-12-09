@@ -162,8 +162,7 @@
                                 <label class="text-muted small d-block mb-2">Passport Photo</label>
                                 <img src="{{ passport.photo_display }}" 
                                      alt="Passport Photo" 
-                                     class="img-fluid rounded shadow-sm"
-                                     style="max-height: 200px;">
+                                     class="img-fluid rounded shadow-sm passport-photo-preview">
                             </div>
                             {% endif %}
 
@@ -173,8 +172,7 @@
                                 <label class="text-muted small d-block mb-2">Document Scan</label>
                                 <img src="{{ passport.document_display }}" 
                                      alt="Passport Document" 
-                                     class="img-fluid rounded shadow-sm"
-                                     style="max-width: 100%; cursor: pointer;"
+                                     class="img-fluid rounded shadow-sm passport-document-preview"
                                      onclick="viewFullImage(this.src)">
                                 <small class="d-block text-muted mt-2">Click to enlarge</small>
                             </div>
