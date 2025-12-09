@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+
+{% block title %}Add Passport - Passport App{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-passport me-2"></i>Add New Passport
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST" action="{{ url_for('passport.add') }}" enctype="multipart/form-data" id="passportForm">
+                        <div class="row">
+                            <!-- Personal Information -->
+                            <div class="col-12 mb-3">
+                                <h5 class="border-bottom pb-2">
+                                    <i class="fas fa-user me-2"></i>Personal Information
+                                </h5>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="full_name" class="form-label">Full Name (as on passport) *</label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="full_name" 
+                                       name="full_name" 
+                                       required
+                                       placeholder="John Doe">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="passport_number" class="form-label">Passport Number *</label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="passport_number" 
+                                       name="passport_number" 
+                                       required
+                                       placeholder="A12345678">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="nationality" class="form-label">Nationality *</label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="nationality" 
+                                       name="nationality" 
+                                       required
+                                       placeholder="Nigerian">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="gender" class="form-label">Gender</label>
+                                <select class="form-select" id="gender" name="gender">
+                                    <option value="">Select Gender</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                    <option value="X">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="date_of_birth" class="form-label">Date of Birth</label>
+                                <input type="date" 
+                                       class="form-control" 
+                                       id="date_of_birth" 
+                                       name="date_of_birth">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="place_of_birth" class="form-label">Place of Birth</label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="place_of_birth" 
+                                       name="place_of_birth"
+                                       placeholder="Lagos, Nigeria">
+                            </div>
+
+                            <!-- Passport Details -->
+                            <div class="col-12 mt-3 mb-3">
+                                <h5 class="border-bottom pb-2">
+                                    <i class="fas fa-id-card me-2"></i>Passport Details
+                                </h5>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="issuing_country" class="form-label">Issuing Country *</label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="issuing_country" 
+                                       name="issuing_country" 
+                                       required
+                                       placeholder="Nigeria">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="issue_date" class="form-label">Issue Date</label>
+                                <input type="date" 
+                                       class="form-control" 
+                                       id="issue_date" 
+                                       name="issue_date">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="expiry_date" class="form-label">Expiry Date *</label>
+                                <input type="date" 
+                                       class="form-control" 
+                                       id="expiry_date" 
+                                       name="expiry_date" 
+                                       required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="form-check mt-4 pt-2">
+                                    <input class="form-check-input" 
+                                           type="checkbox" 
+                                           id="is_primary" 
+                                           name="is_primary"
+                                           aria-label="Set as primary passport">
+                                    <label class="form-check-label" for="is_primary">
+                                        <i class="fas fa-star text-warning me-1"></i>Set as Primary Passport
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Document Upload -->
+                            <div class="col-12 mt-3 mb-3">
+                                <h5 class="border-bottom pb-2">
+                                    <i class="fas fa-camera me-2"></i>Documents & Photos
+                                </h5>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="photo" class="form-label">Passport Photo</label>
+                                <input type="file" 
+                                       class="form-control" 
+                                       id="photo" 
+                                       name="photo"
+                                       accept="image/*"
+                                       aria-label="Upload passport photo">
+                                <small class="text-muted">Your photo from the passport</small>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="document_image" class="form-label">Passport Document Scan</label>
+                                <input type="file" 
+                                       class="form-control" 
+                                       id="document_image" 
+                                       name="document_image"
+                                       accept="image/*"
+                                       aria-label="Upload passport document scan">
+                                <small class="text-muted">Full scan of passport bio-data page</small>
+                            </div>
+
+                            <!-- OCR Scan Button -->
+                            <div class="col-12 mb-3">
+                                <div class="alert alert-info">
+                                    <i class="fas fa-magic me-2"></i>
+                                    <strong>Quick Scan:</strong> Upload passport image and we'll automatically extract information
+                                    <button type="button" 
+                                            class="btn btn-sm btn-info ms-2" 
+                                            onclick="scanPassport()"
+                                            aria-label="Scan passport with OCR">
+                                        <i class="fas fa-qrcode me-1"></i>Scan MRZ
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Notes -->
+                            <div class="col-12 mb-3">
+                                <label for="notes" class="form-label">Notes (Optional)</label>
+                                <textarea class="form-control" 
+                                          id="notes" 
+                                          name="notes" 
+                                          rows="3"
+                                          placeholder="Any additional notes about this passport"></textarea>
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="col-12">
+                                <hr>
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save me-2"></i>Save Passport
+                                    </button>
+                                    <a href="{{ url_for('passport.index') }}" class="btn btn-secondary">
+                                        <i class="fas fa-times me-2"></i>Cancel
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Security Notice -->
+            <div class="alert alert-success mt-3">
+                <i class="fas fa-lock me-2"></i>
+                <strong>Security:</strong> All sensitive data is encrypted using AES-256 encryption before storage
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function scanPassport() {
+    const docImage = document.getElementById('document_image');
+    
+    if (!docImage.files || !docImage.files[0]) {
+        alert('Please upload a passport document image first');
+        return;
+    }
+    
+    const formData = new FormData();
+    formData.append('image', docImage.files[0]);
+    
+    // Show loading
+    const btn = event.target;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Scanning...';
+    
+    fetch('/passport/scan', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-qrcode me-1"></i>Scan MRZ';
+        
+        if (data.success) {
+            // Fill form with scanned data
+            if (data.passport_number) document.getElementById('passport_number').value = data.passport_number;
+            if (data.full_name) document.getElementById('full_name').value = data.full_name;
+            if (data.nationality) document.getElementById('nationality').value = data.nationality;
+            if (data.date_of_birth) document.getElementById('date_of_birth').value = data.date_of_birth;
+            if (data.gender) document.getElementById('gender').value = data.gender;
+            if (data.expiry_date) document.getElementById('expiry_date').value = data.expiry_date;
+            
+            alert('Passport scanned successfully! Please review the extracted information.');
+        } else {
+            alert('Failed to scan passport: ' + (data.message || 'Unknown error'));
+        }
+    })
+    .catch(error => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-qrcode me-1"></i>Scan MRZ';
+        console.error('Error:', error);
+        alert('An error occurred while scanning the passport');
+    });
+}
+</script>
+{% endblock %}
