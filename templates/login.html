@@ -29,7 +29,7 @@
         <form method="POST" action="{{ url_for('auth.login') }}" class="auth-form">
             <div class="form-group">
                 <label for="username" class="form-label">
-                    <i class="fas fa-user"></i> Username
+                    <i class="fas fa-user"></i> Username or Email
                 </label>
                 <input type="text" class="form-control" id="username" name="username" 
                        value="{{ username or '' }}" required autofocus 
