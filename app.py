@@ -24,7 +24,7 @@ db.init_app(app)
 
 login_manager = LoginManager(app)
 login_manager.login_view = 'auth.login'
-login_manager.login_message = 'Please log in to access this page.'
+login_manager.login_message = 'Authentication required. Please log in to continue.'
 login_manager.login_message_category = 'info'
 
 # Import routes (after db is initialized)
