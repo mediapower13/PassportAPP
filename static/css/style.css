@@ -157,9 +157,10 @@ body {
 
 .auth-title {
     color: var(--dark-bg);
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 700;
     margin-bottom: 8px;
+    letter-spacing: -0.5px;
 }
 
 .auth-subtitle {
