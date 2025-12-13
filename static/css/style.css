@@ -237,16 +237,17 @@ body {
 
 .btn-primary {
     width: 100%;
-    padding: 14px;
+    padding: 16px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     color: white;
     font-weight: 600;
     font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
 }
 
 .btn-primary:hover {
