@@ -405,9 +405,9 @@ body {
 /* Stats Cards */
 .stat-card {
     background: white;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
