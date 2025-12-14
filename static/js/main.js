@@ -22,7 +22,7 @@ function togglePassword(fieldId) {
     }
 }
 
-// Auto-dismiss alerts after 6 seconds
+// Auto-dismiss alerts after 5 seconds
 document.addEventListener('DOMContentLoaded', function() {
     const alerts = document.querySelectorAll('.alert');
     
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             const bsAlert = new bootstrap.Alert(alert);
             bsAlert.close();
-        }, 6000);
+        }, 5000);
     });
 });
 
