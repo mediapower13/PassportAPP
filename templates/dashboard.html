@@ -125,13 +125,43 @@
             <div class="col-md-3">
                 <div class="stat-card">
                     <div class="stat-icon bg-info">
-                        <i class="fas fa-clock"></i>
+                        <i class="fas fa-wallet"></i>
                     </div>
                     <div class="stat-details">
-                        <h3>Expiring</h3>
-                        <p>Next 90 Days</p>
-                        <span class="stat-value">{{ expiring_count }}</span>
+                        <h3>Blockchain</h3>
+                        <p>Web3 Status</p>
+                        <span class="stat-value" id="web3Status">Not Connected</span>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Web3 Wallet Section -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="quick-actions-card web3-wallet-card">
+                    <h3 class="section-title">
+                        <i class="fas fa-link"></i> Web3 Wallet Integration
+                    </h3>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <button id="connectWalletBtn" class="btn btn-primary w-100 mb-3">
+                                <i class="fas fa-wallet"></i> Connect Wallet
+                            </button>
+                            <div id="walletAddress" class="wallet-address" style="display: none;"></div>
+                        </div>
+                        <div class="col-md-6 web3-feature" style="display: none;">
+                            <button id="syncFromBlockchainBtn" class="btn btn-success w-100">
+                                <i class="fas fa-sync"></i> Sync from Blockchain
+                            </button>
+                        </div>
+                    </div>
+                    <div class="web3-warning mt-3">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i> Connect your Web3 wallet to store passport data securely on blockchain
+                        </div>
+                    </div>
+                    <div id="blockchainPassports" class="mt-4"></div>
                 </div>
             </div>
         </div>
