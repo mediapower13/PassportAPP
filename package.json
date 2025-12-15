@@ -1,13 +1,16 @@
 {
-  "name": "booking-events",
+  "name": "passport-app-web3",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat run scripts/deploy.js",
+    "hardhat-node": "npx hardhat node"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "Booking events",
+  "author": "PassportApp Team",
+  "license": "MIT",
+  "description": "Passport management with Web3 blockchain integration",
   "dependencies": {
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
@@ -16,7 +19,14 @@
     "express": "^4.21.1",
     "express-ejs-layouts": "^2.5.1",
     "mongoose": "^8.8.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "@openzeppelin/contracts": "^5.0.0",
+    "ethers": "^6.9.0",
+    "web3": "^4.3.0"
   },
-  "keywords": []
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "hardhat": "^2.19.0"
+  },
+  "keywords": ["passport", "web3", "blockchain", "ethereum"]
 }
