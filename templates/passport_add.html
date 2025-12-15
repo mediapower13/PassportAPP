@@ -201,11 +201,21 @@
                 <i class="fas fa-lock me-2"></i>
                 <strong>Security:</strong> All sensitive data is encrypted using AES-256 encryption before storage
             </div>
+            
+            <!-- Web3 Blockchain Storage -->
+            <div class="alert alert-info mt-3 web3-feature" style="display: none;">
+                <i class="fas fa-link me-2"></i>
+                <strong>Blockchain:</strong> Store this passport data securely on blockchain
+                <button type="button" id="storeOnBlockchainBtn" class="btn btn-sm btn-primary ms-3">
+                    <i class="fas fa-save"></i> Store on Blockchain
+                </button>
+            </div>
+            <div id="transactionInfo"></div>
         </div>
     </div>
 </div>
 
-<script>
+<!-- Loading Spinner -->
 function scanPassport() {
     const docImage = document.getElementById('document_image');
     
