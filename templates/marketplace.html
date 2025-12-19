@@ -95,8 +95,8 @@
                     <div class="card-body">
                         <div class="row g-3">
                             <div class="col-md-3">
-                                <label class="form-label">Category</label>
-                                <select class="form-select" id="categoryFilter">
+                                <label class="form-label" for="categoryFilter">Category</label>
+                                <select class="form-select" id="categoryFilter" title="Filter by category">
                                     <option value="">All Services</option>
                                     <option value="verification">Verification</option>
                                     <option value="translation">Translation</option>
@@ -105,8 +105,8 @@
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <label class="form-label">Price Range</label>
-                                <select class="form-select" id="priceFilter">
+                                <label class="form-label" for="priceFilter">Price Range</label>
+                                <select class="form-select" id="priceFilter" title="Filter by price range">
                                     <option value="">Any Price</option>
                                     <option value="0-0.01">< 0.01 ETH</option>
                                     <option value="0.01-0.05">0.01 - 0.05 ETH</option>
@@ -115,8 +115,8 @@
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <label class="form-label">Sort By</label>
-                                <select class="form-select" id="sortFilter">
+                                <label class="form-label" for="sortFilter">Sort By</label>
+                                <select class="form-select" id="sortFilter" title="Sort listings">
                                     <option value="rating">Highest Rated</option>
                                     <option value="price-low">Price: Low to High</option>
                                     <option value="price-high">Price: High to Low</option>
@@ -249,8 +249,8 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Category</label>
-                            <select class="form-select" id="serviceCategory" required>
+                            <label class="form-label" for="serviceCategory">Category</label>
+                            <select class="form-select" id="serviceCategory" title="Service Category" required>
                                 <option value="verification">Verification</option>
                                 <option value="translation">Translation</option>
                                 <option value="notarization">Notarization</option>
