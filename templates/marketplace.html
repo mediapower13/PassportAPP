@@ -231,21 +231,21 @@
                 <div class="modal-body">
                     <form id="createListingForm">
                         <div class="mb-3">
-                            <label class="form-label">Service Name</label>
-                            <input type="text" class="form-control" id="serviceName" required>
+                            <label class="form-label" for="serviceName">Service Name</label>
+                            <input type="text" class="form-control" id="serviceName" placeholder="Enter service name" title="Service Name" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea class="form-control" id="serviceDescription" rows="3" required></textarea>
+                            <label class="form-label" for="serviceDescription">Description</label>
+                            <textarea class="form-control" id="serviceDescription" rows="3" placeholder="Describe your service" title="Service Description" required></textarea>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Price (ETH)</label>
-                                <input type="number" class="form-control" id="servicePrice" step="0.001" required>
+                                <label class="form-label" for="servicePrice">Price (ETH)</label>
+                                <input type="number" class="form-control" id="servicePrice" step="0.001" placeholder="0.05" title="Price in ETH" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Completion Time (hours)</label>
-                                <input type="number" class="form-control" id="completionTime" required>
+                                <label class="form-label" for="completionTime">Completion Time (hours)</label>
+                                <input type="number" class="form-control" id="completionTime" placeholder="24" title="Completion Time in Hours" required>
                             </div>
                         </div>
                         <div class="mb-3">
