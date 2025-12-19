@@ -21,6 +21,27 @@
     --transition-speed: 0.3s;
 }
 
+/* Utility Classes */
+.web3-feature {
+    display: none;
+}
+
+.wallet-address {
+    display: none;
+}
+
+.stat-card-pink {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.stat-card-blue {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.stat-card-green {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
