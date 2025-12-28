@@ -30,11 +30,16 @@ login_manager.login_message_category = 'info'
 # Import routes (after db is initialized)
 from routes import auth_bp, main_bp
 from passport_routes import passport_bp
+from web3_routes import web3_bp, init_web3
 
 # Register blueprints
 app.register_blueprint(auth_bp)
 app.register_blueprint(main_bp)
 app.register_blueprint(passport_bp)
+app.register_blueprint(web3_bp)
+
+# Initialize Web3
+init_web3()
 
 @login_manager.user_loader
 def load_user(user_id):
