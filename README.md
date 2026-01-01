@@ -9,3 +9,6 @@ Blockchain-based Digital Passport Management System
 
 ## Installation
 pip install -r requirements.txt
+
+## Usage
+python run.py
