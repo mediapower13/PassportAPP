@@ -6,3 +6,6 @@ Blockchain-based Digital Passport Management System
 - Secure passport management
 - Blockchain integration
 - IPFS storage
+
+## Installation
+pip install -r requirements.txt
