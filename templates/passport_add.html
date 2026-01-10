@@ -233,7 +233,6 @@ function scanPassport() {
     const formData = new FormData();
     formData.append('image', docImage.files[0]);
     
-    // Show loading
     const btn = event.target;
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Scanning...';
