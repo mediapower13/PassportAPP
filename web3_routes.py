@@ -58,7 +58,7 @@ def disconnect_wallet():
 @web3_bp.route('/status', methods=['GET'])
 @login_required
 def get_web3_status():
-    """Get Web3 connection status"""
+
     try:
         is_connected = web3_backend.is_connected()
         wallet_address = session.get('wallet_address')
