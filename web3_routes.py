@@ -25,7 +25,6 @@ def connect_wallet():
         # Store wallet address in session
         session['wallet_address'] = wallet_address
         
-        # Update user's wallet address in database
         current_user.wallet_address = wallet_address
         from models import db
         db.session.commit()
