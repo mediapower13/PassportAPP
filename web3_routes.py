@@ -22,7 +22,6 @@ def connect_wallet():
         if not wallet_address:
             return jsonify({'error': 'Wallet address required'}), 400
         
-        # Store wallet address in session
         session['wallet_address'] = wallet_address
         
         current_user.wallet_address = wallet_address
