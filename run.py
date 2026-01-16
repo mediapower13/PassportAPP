@@ -1,7 +1,3 @@
-"""
-PassportApp - Python Flask Authentication System
-Author: mediapower13
-"""
 
 from app import app, db
 
