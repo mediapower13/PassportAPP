@@ -42,16 +42,30 @@ def settings():
 @main_bp.route('/update_profile', methods=['POST'])
 @login_required
 def update_profile():
-    name = request.form.get('name')
-    bio = request.form.get('bio')
+    try:
+        name = request.form.get('name', '').strip()
+        bio = request.form.get('bio', '').strip()
+        
+        # Validate input lengths
+        if name and len(name) > 255:
+            flash('Name is too long (max 255 characters)', 'danger')
+            return redirect(url_for('main.profile'))
+        
+        if bio and len(bio) > 1000:
+            flash('Bio is too long (max 1000 characters)', 'danger')
+            return redirect(url_for('main.profile'))
+        
+        if name:
+            current_user.name = name
+        if bio:
+            current_user.bio = bio
+        
+        db.session.commit()
+        flash('Profile updated successfully!', 'success')
+    except Exception as e:
+        db.session.rollback()
+        flash(f'Error updating profile: {str(e)}', 'danger')
     
-    if name:
-        current_user.name = name
-    if bio:
-        current_user.bio = bio
-    
-    db.session.commit()
-    flash('Profile updated successfully!', 'success')
     return redirect(url_for('main.profile'))
 
 # Authentication routes
