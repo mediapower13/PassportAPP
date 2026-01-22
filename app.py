@@ -15,6 +15,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # File upload configuration
 app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024  # 20MB max file size
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.jpeg', '.png', '.gif', '.pdf']
+app.config['UPLOAD_FOLDER'] = 'uploads'
+
+# Security headers
+app.config['SESSION_COOKIE_SECURE'] = True  # Enable in production with HTTPS
+app.config['SESSION_COOKIE_HTTPONLY'] = True
+app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 
 # Import db from models
 from models import db, User
@@ -38,8 +44,12 @@ app.register_blueprint(main_bp)
 app.register_blueprint(passport_bp)
 app.register_blueprint(web3_bp)
 
-# Initialize Web3
-init_web3()
+# Initialize Web3 with error handling
+try:
+    init_web3()
+except Exception as e:
+    print(f"Warning: Web3 initialization failed - {e}")
+    print("The app will run without blockchain features.")
 
 @login_manager.user_loader
 def load_user(user_id):
