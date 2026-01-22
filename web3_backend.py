@@ -40,6 +40,10 @@ class Web3Backend:
             
         return True
     
+    def is_connected(self):
+        """Check if Web3 is connected"""
+        return self.w3 is not None and self.w3.is_connected()
+    
     def load_contract(self, address=None, abi_path=None):
         """Load smart contract"""
         if not self.w3:
@@ -72,6 +76,10 @@ class Web3Backend:
         )
         
         return True
+    
+    def set_contract(self, address, abi_path=None):
+        """Alias for load_contract for compatibility"""
+        return self.load_contract(address, abi_path)
     
     def store_passport(self, passport_number, document_hash, private_key=None):
         """Store passport on blockchain"""
