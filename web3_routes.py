@@ -22,6 +22,17 @@ def connect_wallet():
         if not wallet_address:
             return jsonify({'error': 'Wallet address required'}), 400
         
+        # Validate wallet address format
+        if not wallet_address.startswith('0x') or len(wallet_address) != 42:
+            return jsonify({'error': 'Invalid wallet address format'}), 400
+        
+        # Verify checksum if Web3 is connected
+        if web3_backend.is_connected():
+            try:
+                wallet_address = web3_backend.w3.to_checksum_address(wallet_address)
+            except ValueError:
+                return jsonify({'error': 'Invalid wallet address checksum'}), 400
+        
         session['wallet_address'] = wallet_address
         
         current_user.wallet_address = wallet_address
@@ -58,7 +69,7 @@ def disconnect_wallet():
 @web3_bp.route('/status', methods=['GET'])
 @login_required
 def get_web3_status():
-
+    """Get Web3 connection status"""
     try:
         is_connected = web3_backend.is_connected()
         wallet_address = session.get('wallet_address')
@@ -73,8 +84,8 @@ def get_web3_status():
             try:
                 status['block_number'] = web3_backend.w3.eth.block_number
                 status['chain_id'] = web3_backend.w3.eth.chain_id
-            except:
-                pass
+            except Exception as e:
+                status['error'] = f'Failed to get blockchain info: {str(e)}'
         
         return jsonify(status)
     
@@ -87,6 +98,10 @@ def get_web3_status():
 def store_passport_on_blockchain():
     """Store passport data on blockchain"""
     try:
+        # Check if Web3 is connected
+        if not web3_backend.is_connected():
+            return jsonify({'error': 'Web3 not connected. Please connect to blockchain first.'}), 503
+        
         data = request.get_json()
         passport_id = data.get('passport_id')
         
@@ -179,7 +194,15 @@ def get_transaction(tx_hash):
         if not web3_backend.is_connected():
             return jsonify({'error': 'Web3 not connected'}), 500
         
+        # Validate transaction hash format
+        if not tx_hash.startswith('0x') or len(tx_hash) != 66:
+            return jsonify({'error': 'Invalid transaction hash format'}), 400
+        
         tx = web3_backend.w3.eth.get_transaction(tx_hash)
+        
+        if tx is None:
+            return jsonify({'error': 'Transaction not found'}), 404
+        
         receipt = web3_backend.w3.eth.get_transaction_receipt(tx_hash)
         
         return jsonify({
@@ -191,8 +214,8 @@ def get_transaction(tx_hash):
                 'value': str(tx['value']),
                 'gas': tx['gas'],
                 'gasPrice': str(tx['gasPrice']),
-                'blockNumber': receipt['blockNumber'],
-                'status': receipt['status']
+                'blockNumber': receipt['blockNumber'] if receipt else None,
+                'status': receipt['status'] if receipt else None
             }
         })
     
