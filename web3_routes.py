@@ -137,11 +137,14 @@ def store_passport_on_blockchain():
             document_hash
         )
         
+        if not result or 'transaction_hash' not in result:
+            return jsonify({'error': 'Failed to store passport on blockchain'}), 500
+        
         return jsonify({
             'success': True,
             'message': 'Passport stored on blockchain',
             'transaction_hash': result['transaction_hash'],
-            'block_number': result['block_number']
+            'block_number': result.get('block_number', 'N/A')
         })
     
     except Exception as e:
