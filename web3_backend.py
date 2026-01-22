@@ -24,21 +24,25 @@ class Web3Backend:
         
     def connect(self, rpc_url=None, private_key=None):
         """Connect to blockchain network"""
-        if not rpc_url:
-            rpc_url = os.getenv('WEB3_RPC_URL', 'http://127.0.0.1:8545')
+        try:
+            if not rpc_url:
+                rpc_url = os.getenv('WEB3_RPC_URL', 'http://127.0.0.1:8545')
+                
+            self.w3 = Web3(Web3.HTTPProvider(rpc_url))
             
-        self.w3 = Web3(Web3.HTTPProvider(rpc_url))
-        
-        if not self.w3.is_connected():
-            raise Exception(f"Failed to connect to {rpc_url}")
-        
-        # Set account if private key provided
-        if private_key:
-            self.account = Account.from_key(private_key)
-        elif os.getenv('PRIVATE_KEY'):
-            self.account = Account.from_key(os.getenv('PRIVATE_KEY'))
+            if not self.w3.is_connected():
+                raise Exception(f"Failed to connect to {rpc_url}")
             
-        return True
+            # Set account if private key provided
+            if private_key:
+                self.account = Account.from_key(private_key)
+            elif os.getenv('PRIVATE_KEY'):
+                self.account = Account.from_key(os.getenv('PRIVATE_KEY'))
+                
+            return True
+        except Exception as e:
+            print(f"Web3 connection error: {str(e)}")
+            raise
     
     def is_connected(self):
         """Check if Web3 is connected"""
