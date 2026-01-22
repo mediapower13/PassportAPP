@@ -48,6 +48,11 @@ def add():
             nationality = request.form.get('nationality', '').strip()
             date_of_birth = request.form.get('date_of_birth', '').strip()
             place_of_birth = request.form.get('place_of_birth', '').strip()
+            
+            # Validate required fields
+            if not passport_number or not full_name:
+                flash('Passport number and full name are required', 'error')
+                return redirect(url_for('passport.add'))
             gender = request.form.get('gender', '').strip()
             issue_date_str = request.form.get('issue_date', '').strip()
             expiry_date_str = request.form.get('expiry_date', '').strip()
@@ -58,6 +63,15 @@ def add():
             # Validation
             if not all([passport_number, full_name, nationality, expiry_date_str, issuing_country]):
                 flash('Please fill in all required fields', 'danger')
+                return redirect(url_for('passport.add'))
+            
+            # Additional validation
+            if len(passport_number) > 50:
+                flash('Passport number is too long', 'danger')
+                return redirect(url_for('passport.add'))
+            
+            if len(full_name) > 255:
+                flash('Full name is too long', 'danger')
                 return redirect(url_for('passport.add'))
             
             # Convert dates
