@@ -86,14 +86,18 @@ def add():
             if expiry_date < datetime.utcnow().date():
                 flash('Passport has already expired. Please renew it.', 'warning')
             
-            # Handle image upload
+            # Handle image upload with size validation
             photo_data = None
             document_image = None
+            max_file_size = 10 * 1024 * 1024  # 10MB
             
             if 'photo' in request.files:
                 photo_file = request.files['photo']
                 if photo_file and photo_file.filename:
                     photo_bytes = photo_file.read()
+                    if len(photo_bytes) > max_file_size:
+                        flash('Photo file is too large. Maximum size is 10MB', 'danger')
+                        return redirect(url_for('passport.add'))
                     photo_base64 = base64.b64encode(photo_bytes).decode('utf-8')
                     photo_data = encryption.encrypt(photo_base64)
             
@@ -101,6 +105,9 @@ def add():
                 doc_file = request.files['document_image']
                 if doc_file and doc_file.filename:
                     doc_bytes = doc_file.read()
+                    if len(doc_bytes) > max_file_size:
+                        flash('Document image is too large. Maximum size is 10MB', 'danger')
+                        return redirect(url_for('passport.add'))
                     doc_base64 = base64.b64encode(doc_bytes).decode('utf-8')
                     document_image = encryption.encrypt(doc_base64)
             
