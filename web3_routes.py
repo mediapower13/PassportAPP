@@ -105,17 +105,28 @@ def store_passport_on_blockchain():
         if not wallet_address:
             return jsonify({'error': 'Wallet not connected'}), 400
         
-        tx_hash = web3_backend.store_passport(
-            wallet_address,
-            passport.passport_number,
-            f"{passport.first_name} {passport.last_name}",
-            passport.nationality
+        # Get decrypted passport number
+        from encryption import get_encryption_service
+        encryption = get_encryption_service()
+        passport_number = encryption.decrypt(passport.passport_number)
+        full_name = encryption.decrypt(passport.full_name)
+        
+        # Create document hash
+        import hashlib
+        document_data = f"{passport_number}_{full_name}_{passport.nationality}"
+        document_hash = hashlib.sha256(document_data.encode()).hexdigest()
+        
+        # Store on blockchain using correct parameters
+        result = web3_backend.store_passport(
+            passport_number,
+            document_hash
         )
         
         return jsonify({
             'success': True,
             'message': 'Passport stored on blockchain',
-            'tx_hash': tx_hash
+            'transaction_hash': result['transaction_hash'],
+            'block_number': result['block_number']
         })
     
     except Exception as e:
