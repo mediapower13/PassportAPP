@@ -35,22 +35,30 @@ class EncryptionService:
         if not data:
             return None
         
-        if isinstance(data, str):
-            data = data.encode('utf-8')
-        
-        encrypted = self.cipher.encrypt(data)
-        return encrypted.decode('utf-8')
+        try:
+            if isinstance(data, str):
+                data = data.encode('utf-8')
+            
+            encrypted = self.cipher.encrypt(data)
+            return encrypted.decode('utf-8')
+        except Exception as e:
+            print(f"Encryption error: {str(e)}")
+            raise
     
     def decrypt(self, encrypted_data):
         """Decrypt encrypted data"""
         if not encrypted_data:
             return None
         
-        if isinstance(encrypted_data, str):
-            encrypted_data = encrypted_data.encode('utf-8')
+        try:
+            if isinstance(encrypted_data, str):
+                encrypted_data = encrypted_data.encode('utf-8')
         
-        decrypted = self.cipher.decrypt(encrypted_data)
-        return decrypted.decode('utf-8')
+            decrypted = self.cipher.decrypt(encrypted_data)
+            return decrypted.decode('utf-8')
+        except Exception as e:
+            print(f"Decryption error: {str(e)}")
+            raise
     
     def encrypt_file(self, file_data):
         """Encrypt file binary data"""
