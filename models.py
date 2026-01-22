@@ -19,6 +19,7 @@ class User(UserMixin, db.Model):
     bio = db.Column(db.Text, nullable=True)
     two_factor_enabled = db.Column(db.Boolean, default=False)
     two_factor_secret = db.Column(db.String(32), nullable=True)
+    wallet_address = db.Column(db.String(42), nullable=True, index=True)
     
     # Relationships
     passports = db.relationship('Passport', backref='owner', lazy=True, cascade='all, delete-orphan')
