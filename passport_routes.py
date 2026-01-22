@@ -74,9 +74,13 @@ def add():
                 flash('Full name is too long', 'danger')
                 return redirect(url_for('passport.add'))
             
-            # Convert dates
-            issue_date = datetime.strptime(issue_date_str, '%Y-%m-%d').date() if issue_date_str else None
-            expiry_date = datetime.strptime(expiry_date_str, '%Y-%m-%d').date()
+            # Convert dates with error handling
+            try:
+                issue_date = datetime.strptime(issue_date_str, '%Y-%m-%d').date() if issue_date_str else None
+                expiry_date = datetime.strptime(expiry_date_str, '%Y-%m-%d').date()
+            except ValueError:
+                flash('Invalid date format. Please use YYYY-MM-DD', 'danger')
+                return redirect(url_for('passport.add'))
             
             # Check if expiry date is valid
             if expiry_date < datetime.utcnow().date():
