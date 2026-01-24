@@ -3,3 +3,4 @@
 ## Endpoints
 - /api/passport - Passport management
 - /api/user - User management
+- /api/auth - Authentication
