@@ -11,3 +11,6 @@ This document describes the API endpoints for the Passport Application.
 - /api/auth - Authentication
 - /api/web3 - Web3 integration
 - /api/ipfs - IPFS storage
+
+## Authentication
+All endpoints require proper authentication.
