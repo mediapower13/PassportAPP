@@ -18,3 +18,4 @@ All endpoints require proper authentication.
 ## Security
 - Use HTTPS in production
 - Implement rate limiting
+- Enable CORS protection
