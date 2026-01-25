@@ -1,5 +1,7 @@
 # API Documentation
 
+## Version 1.0
+
 ## Endpoints
 - /api/passport - Passport management
 - /api/user - User management
