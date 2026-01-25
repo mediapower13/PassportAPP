@@ -1,4 +1,5 @@
 // Password Toggle Functionality
+// Version 1.0.1
 function togglePassword(fieldId) {
     const field = document.getElementById(fieldId);
     const toggleBtn = event ? event.currentTarget : null;
