@@ -2,6 +2,9 @@
 
 ## Version 1.0
 
+## Overview
+This document describes the API endpoints for the Passport Application.
+
 ## Endpoints
 - /api/passport - Passport management
 - /api/user - User management
