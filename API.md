@@ -14,3 +14,7 @@ This document describes the API endpoints for the Passport Application.
 
 ## Authentication
 All endpoints require proper authentication.
+
+## Security
+- Use HTTPS in production
+- Implement rate limiting
