@@ -1,4 +1,4 @@
-# API Documentation
+<!-- # API Documentation
 
 ## Version 1.0
 
@@ -21,4 +21,4 @@ All endpoints require proper authentication.
 ## Security
 - Use HTTPS in production
 - Implement rate limiting
-- Enable CORS protection
+- Enable CORS protection -->
