@@ -1,6 +1,6 @@
 # API Documentation
 
-## Version 1.0
+## Version 1.0.1
 
 ## Last Updated
 January 30, 2026
