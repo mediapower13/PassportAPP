@@ -6,7 +6,7 @@
 January 30, 2026
 
 ## Overview
-This document describes the API endpoints for the Passport Application.
+This document describes the API endpoints for the Passport Application system.
 
 ## Endpoints
 - /api/passport - Passport management
